@@ -64,3 +64,15 @@ console.log("Refractor UC2 to Write Functions");
     }
     employeeWage= totalWorkinghrs*WAGE_PER_HOUR;
     console.log("EmployeeWage for month is: "+ employeeWage);
+    //UC5
+    console.log("Total work Hrs Less Than 100 or Total work days less than 20");
+    const MAX_WORKING_HOURS=160;
+    let totalWorkingDays=0;
+    let totalEmpHrs=0;
+    while(totalEmpHrs<MAX_WORKING_HOURS && totalWorkingDays<NUM_OF_WORKING_DAYS)//Condition
+    {
+        totalWorkingDays++;
+        empCheck= Math.floor((Math.random()*10)%3);
+        totalEmpHrs+=getWorkingHrs(empCheck); ;
+    }
+    console.log("Total working days: "+totalWorkingDays +" Total Wage: "+ totalEmpHrs*WAGE_PER_HOUR);
