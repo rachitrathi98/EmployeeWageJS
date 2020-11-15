@@ -17,7 +17,6 @@ const IS_PART_TIME=1;
 const FUll_TIME_HRS=8;
 const PART_TIME_HRS=4;
 const WAGE_PER_HOUR=20;
-const WAGE_PER_HOUR=20;
 let emp_hours=0;
 let employeePresence= Math.floor((Math.random()*10)%3);
 switch(employeePresence)
@@ -54,5 +53,4 @@ console.log("Refractor UC2 to Write Functions");
     }
     let empCheck= Math.floor((Math.random()*10)%3);
     let empHrs=getWorkingHrs(empCheck);
-    let employeeWage= WAGE_PER_HOUR*emp_hours;
-    console.log("empWage For UC3: "+employeeWage);
+    console.log("empWage For UC3: "+WAGE_PER_HOUR*emp_hours);
