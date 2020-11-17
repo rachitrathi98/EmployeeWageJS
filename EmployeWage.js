@@ -1,3 +1,4 @@
+let empDailyWageArray = new Array();
 console.log("welcome to employee wage computation problem");
 //UC1
 let checkForEmployeePresence= Math.floor((Math.random()*10)%2);
@@ -73,6 +74,13 @@ console.log("Refractor UC2 to Write Functions");
     {
         totalWorkingDays++;
         empCheck= Math.floor((Math.random()*10)%3);
-        totalEmpHrs+=getWorkingHrs(empCheck); ;
+        totalEmpHrs+=getWorkingHrs(empCheck);
+        empDailyWageArray.push(calculateDailyWage(getWorkingHrs(empCheck)));
     }
     console.log("Total working days: "+totalWorkingDays +" Total Wage: "+ totalEmpHrs*WAGE_PER_HOUR);
+    //UC6
+    function calculateDailyWage(empHrs)
+    {
+        return empHrs*WAGE_PER_HOUR;
+    }
+    console.log("Employee Wages are: ",empDailyWageArray);
