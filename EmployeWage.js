@@ -84,3 +84,62 @@ console.log("Refractor UC2 to Write Functions");
         return empHrs*WAGE_PER_HOUR;
     }
     console.log("Employee Wages are: ",empDailyWageArray);
+    //UC 7A - Calculate total wage using traversal and reduce methods
+totalEmpWage=0;
+function sum(dailyWage)
+{
+    totalEmpWage+=dailyWage;
+}
+empDailyWageArray.forEach(sum);
+console.log("UC 7A - Emp wage with foreach: "+totalEmpWage);
+function totalWages(totalWage,dailyWage)
+{
+    return totalWage+dailyWage;
+}
+console.log("Emp wage with reduce: "+empDailyWageArray.reduce(totalWages,0));
+
+//UC 7B - Show the Day along with Daily Wage using Array map helper function
+let dailyCntr=0;
+function mapDayWithWage(dailyWage)
+{
+    dailyCntr++;
+    return dailyCntr+" = "+dailyWage;
+}
+console.log("UC 7B - Daily wage map: ");
+let mapDayWithWageArr=empDailyWageArray.map(mapDayWithWage);
+console.log(mapDayWithWageArr);
+
+//UC 7C - Show Days when Full time wage of 160 were earned using filter function
+function fullTimeWage(dailyWage)
+{
+    return dailyWage.includes('160');
+}
+console.log("UC 7C - Daily wage filter when full time wage earned:");
+let fullDayWageArr=mapDayWithWageArr.filter(fullTimeWage);
+console.log(fullDayWageArr);
+
+//UC 7D - Find the first occurrence when Full Time Wage was earned using find function
+console.log("UC 7D - First time full time wage was earned on Day: "+ mapDayWithWageArr.find(fullTimeWage));
+
+//UC 7E - Check if Every Element of Full Time Wage is truly holding Full time wage
+function isAllFullTimeWage(dailyWage)
+{
+    return dailyWage.includes('160');
+}
+console.log("UC 7E - Check all elements have full time wage: "+fullDayWageArr.every(isAllFullTimeWage))
+
+//UC 7F - Check if there is any Part Time Wage
+function isAnyPartTimeWage(dailyWage)
+{
+    return dailyWage.includes('80');
+}
+console.log("UC 7F - Check if any part time wage is present: "+mapDayWithWageArr.some(isAnyPartTimeWage));
+
+//UC 7G - Find the number of days the Employee Worked
+function totalDaysWorked(numOfDays,dailyWage)
+{
+    if(dailyWage>0)
+    return numOfDays+1;
+    return numOfDays;
+}
+console.log("UC 7G - Number of days employee worked: "+empDailyWageArray.reduce(totalDaysWorked,0));
