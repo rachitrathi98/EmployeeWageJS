@@ -1,4 +1,5 @@
 let empDailyWageArray = new Array();
+let empDailyWageMap = new Map();
 console.log("welcome to employee wage computation problem");
 //UC1
 let checkForEmployeePresence= Math.floor((Math.random()*10)%2);
@@ -76,6 +77,7 @@ console.log("Refractor UC2 to Write Functions");
         empCheck= Math.floor((Math.random()*10)%3);
         totalEmpHrs+=getWorkingHrs(empCheck);
         empDailyWageArray.push(calculateDailyWage(getWorkingHrs(empCheck)));
+        empDailyWageMap.set(totalWorkingDays,calculateDailyWage(empHrs));
     }
     console.log("Total working days: "+totalWorkingDays +" Total Wage: "+ totalEmpHrs*WAGE_PER_HOUR);
     //UC6
@@ -143,3 +145,8 @@ function totalDaysWorked(numOfDays,dailyWage)
     return numOfDays;
 }
 console.log("UC 7G - Number of days employee worked: "+empDailyWageArray.reduce(totalDaysWorked,0));
+
+//UC8
+console.log("UC 8 - Contents of the map:")
+console.log(empDailyWageMap);
+console.log("Total wage using emp wage map: "+Array.from(empDailyWageMap.values()).reduce(totalWages));
