@@ -179,3 +179,33 @@ const findTotal = (totalVal, dailyVal) =>
         console.log("Full Working Days: "+fullWorkingDays); 
         console.log("Part Working Days: "+partWorkingDays);
         console. log("Non Working Days: "+nonWorkingDays);
+
+    //UC 10
+    const MAX_HRS_IN_MONTH=100;
+    let totalEmpHrss=0;
+    let totalWorkingDayss=0;
+    let empDailyWageAndHrArray=new Array();
+
+    function calcDailyWage(empHrs) 
+    {
+        return empHrs * WAGE_PER_HOUR; 
+    }    
+    while(totalEmpHrss<=MAX_HRS_IN_MONTH && totalWorkingDayss<NUM_OF_WORKING_DAYS)
+    { 
+        totalWorkingDayss++;
+        let empCheck = Math.floor(Math.random() * 10) % 3; 
+        let empHrs = getWorkingHrs(empCheck); 
+        totalEmpHrss += empHrs; 
+        empDailyWageAndHrArray.push(
+        {
+            dayNumb:totalWorkingDayss,
+            dailyHr:empHrs,
+            dailyWage:calcDailyWage(empHrs),
+            
+            toString(){
+                return '\nDay:'+this.dayNumb+'\t=>'+'\tDailyWage:'+this.dailyWage+'\tDailyHours:'+this.dailyHr;
+            },
+
+        });
+    }
+    console.log("Showing daily hours worked and wage using object "+empDailyWageAndHrArray);
