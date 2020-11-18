@@ -270,7 +270,7 @@ const findTotal = (totalVal, dailyVal) =>
 }
 
 {
-    // UC 12 Extension of employee payroll class, add startDate and gender.
+    // UC 12 & 13 Extension of employee payroll class, add startDate and gender and Regex.
     class EmployeePayrollData 
     {
         // property
@@ -292,7 +292,17 @@ const findTotal = (totalVal, dailyVal) =>
        // getter and setter method 
        get name() { return this._name; } 
        set name(name) { 
-       this._name = name; 
+        let checkName=RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(checkName.test(name))
+        {
+             this._name=name;
+        }
+        else
+        {
+             throw "InCorrect name";
+        }
+        
+    this._name = name; 
        } 
        
        // method 
@@ -304,7 +314,15 @@ const findTotal = (totalVal, dailyVal) =>
     }
         let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000); 
         console.log("Extension of Employee PayRoll "+employeePayrollData.toString());
-        employeePayrollData.name = "john"; 
+        try
+        {
+            employeePayrollData.name = "John"; 
+            console.log("Setting name "+employeePayrollData.name );
+        }
+        catch(e)
+        {
+            console.error(e);
+        }        
         console.log(employeePayrollData.toString()); 
         let newEmployeePayrollData = new EmployeePayrollData(2, "Terrisa", 40000,'F',new Date()); 
         console.log(newEmployeePayrollData.toString()); 
